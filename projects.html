@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header">
+    <div class="container">
+        <h1>My Projects</h1>
+        <p>Showcasing my work in project management, technology implementation, and business strategy.</p>
+    </div>
+</section>
+
+<!-- Projects Section -->
+<section class="projects-section">
+    <div class="container">
+        <div class="projects-grid">
+            <!-- Project 1 - Costco -->
+            <div class="project-card" style="--animation-order: 1">
+                <div class="project-image">
+                    <img src="{{ url_for('static', filename='img/projects/costco.avif') }}" alt="Accenture Costco AR/VR Integration">
+                </div>
+                <div class="project-content">
+                    <h3>Accenture Costco AR/VR Integration</h3>
+                    <p>Developed a comprehensive AR strategy for Costco, enhancing customer experience and operational efficiency through immersive retail solutions.</p>
+                    <div class="project-badges">
+                        <span class="project-badge">1st Place</span>
+                        <span class="project-badge">AR/VR</span>
+                        <span class="project-badge">Retail</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2 - Boeing -->
+            <div class="project-card" style="--animation-order: 2">
+                <div class="project-image">
+                    <img src="{{ url_for('static', filename='img/projects/boeing.avif') }}" alt="Boeing Autonomous Air Taxis">
+                </div>
+                <div class="project-content">
+                    <h3>Boeing Autonomous Air Taxis</h3>
+                    <p>Led a cross-functional team in designing an autonomous air taxi strategy, focusing on market viability, regulatory compliance, and technological feasibility.</p>
+                    <div class="project-badges">
+                        <span class="project-badge">Team Leader</span>
+                        <span class="project-badge">Autonomous</span>
+                        <span class="project-badge">Aviation</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3 - Eat Together -->
+            <div class="project-card" style="--animation-order: 3">
+                <div class="project-image">
+                    <img src="{{ url_for('static', filename='img/projects/eat-together.png') }}" alt="Eat Together Community App">
+                </div>
+                <div class="project-content">
+                    <h3>Eat Together Community App</h3>
+                    <p>Led cross-functional Agile teams to develop a community dining app that fosters engagement and inclusivity with over 400+ users.</p>
+                    <div class="project-badges">
+                        <span class="project-badge">React Native</span>
+                        <span class="project-badge">Firebase</span>
+                        <span class="project-badge">Agile</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
