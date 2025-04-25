@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Megan Louie - Projects</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500&display=swap');
+
+        /* Base styles */
+        :root {
+            --primary-color: #222222;
+            --secondary-color: #e8e0d5;
+            --accent-color: #d1c7b7;
+            --light-accent: #f9f7f4;
+            --bg-color: #ffffff;
+            --text-color: #555;
+            --light-text: #888;
+            --header-height: 70px;
+            --border-radius: 12px;
+            --card-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.8;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(circle at 25% 5%, rgba(209, 199, 183, 0.05) 5%, transparent 10%),
+                radial-gradient(circle at 75% 20%, rgba(209, 199, 183, 0.05) 5%, transparent 15%),
+                radial-gradient(circle at 50% 80%, rgba(209, 199, 183, 0.05) 8%, transparent 18%);
+            background-attachment: fixed;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+        }
+
+        /* Header styles */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--header-height);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(200, 169, 150, 0.2);
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        .logo:hover::after {
+            width: 100%;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 40px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+            transition: var(--transition);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* Main content */
+        main {
+            max-width: 1200px;
+            margin: 100px auto 60px;
+            padding: 0 30px;
+        }
+
+        .projects-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .projects-header h1 {
+            font-size: 42px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .projects-header h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            border-radius: 3px;
+        }
+
+        .projects-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--light-text);
+            font-size: 18px;
+        }
+
+        /* Projects grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .project-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            height: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-bottom: 4px solid var(--accent-color);
+            transition: var(--transition);
+        }
+
+        .project-card a {
+            display: block;
+            overflow: hidden;
+        }
+
+        .project-card a:hover .project-image {
+            transform: scale(1.05);
+        }
+
+        .project-content {
+            padding: 30px;
+        }
+
+        .project-tag {
+            display: inline-block;
+            background: var(--light-accent);
+            color: var(--primary-color);
+            font-size: 12px;
+            font-weight: 500;
+            padding: 5px 12px;
+            border-radius: 20px;
+            margin-bottom: 15px;
+        }
+
+        .project-title {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .project-description {
+            margin-bottom: 20px;
+            color: var(--text-color);
+            line-height: 1.7;
+        }
+
+        .project-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .skill-badge {
+            font-size: 12px;
+            background: var(--secondary-color);
+            color: var(--text-color);
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 500;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .project-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        .project-link:hover {
+            color: var(--accent-color);
+        }
+
+        .project-link:hover::after {
+            width: 100%;
+        }
+
+        .project-link svg {
+            margin-left: 5px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background-color: white;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.05);
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color), var(--primary-color));
+        }
+
+        footer p {
+            color: var(--light-text);
+            font-size: 15px;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-header h1 {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">Megan Louie</a>
+        <nav>
+            <ul>
+                <li><a href="resume.html">Resume</a></li>
+                <li><a href="projects.html">Projects</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="projects-header">
+            <h1>My Projects</h1>
+            <p>Highlighting some of my favorite projects I've worked on, whether in class or community work. These projects showcase my passion for technology and solving real-world problems through innovation.</p>
+        </div>
+
+        <div class="projects-grid">
+            <div class="project-card">
+                <a href="https://github.com/EphremTil17/emotion_recognition/tree/main" target="_blank">
+                    <img src="engageaivideo.mov" alt="EngageAI Project" class="project-image">
+                </a>
+                <div class="project-content">
+                    <span class="project-tag">Award Winner</span>
+                    <h3 class="project-title">EngageAI - Best Tech Award @ MSIS Demo Day</h3>
+                    <p class="project-description">My team and I built an AI-powered education tool that allows instructors to upload recorded online Zoom lectures and receive an intuitive and actionable engagement analytics dashboard, helping pinpoint where students are most engaged (or lost). It is built using a custom-trained computer vision architecture (ResNet-50) that maps facial emotions to engagement levels.</p>
+                    <div class="project-skills">
+                        <span class="skill-badge">AI/ML</span>
+                        <span class="skill-badge">Computer Vision</span>
+                        <span class="skill-badge">EdTech</span>
+                        <span class="skill-badge">Data Analytics</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <a href="https://docs.google.com/presentation/d/1dxGmGeLnRlrc48ct5DF-XwpVBdQF2y3N4y7ZmiUyIro/edit?usp=sharing" target="_blank">
+                    <img src="costcopic.jpeg" alt="Accenture Costco AR/VR Integration" class="project-image">
+                </a>
+                <div class="project-content">
+                    <span class="project-tag">1st Place</span>
+                    <h3 class="project-title">Accenture Costco AR/VR Integration</h3>
+                    <p class="project-description">Led a cross-functional team to develop a comprehensive AR strategy for Costco, enhancing customer experience and operational efficiency. Our solution focused on creating immersive in-store navigation, product information visualization, and employee training modules. We delivered a winning pitch that demonstrated practical implementation strategies and substantial ROI potential.</p>
+                    <div class="project-skills">
+                        <span class="skill-badge">AR/VR</span>
+                        <span class="skill-badge">Retail Tech</span>
+                        <span class="skill-badge">Business Strategy</span>
+                        <span class="skill-badge">UX Design</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <a href="https://github.com/eat-together-team" target="_blank">
+                    <img src="ETLogo.jpeg" alt="Eat Together Community App" class="project-image">
+                </a>
+                <div class="project-content">
+                    <span class="project-tag">Community Project</span>
+                    <h3 class="project-title">Eat Together Community App</h3>
+                    <p class="project-description">Managed the development of a social dining application that connects UW students through shared meals. As project manager, I led a team of designers and engineers to create a platform that fosters meaningful connections in the university community. The app features intelligent matching algorithms, interactive scheduling, and integrated review systems to build trust among users.</p>
+                    <div class="project-skills">
+                        <span class="skill-badge">Project Management</span>
+                        <span class="skill-badge">Mobile App</span>
+                        <span class="skill-badge">UX Research</span>
+                        <span class="skill-badge">Community Building</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Megan Louie. All rights reserved.</p>
+    </footer>
+</body>
+</html>
