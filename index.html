@@ -1,16 +1,601 @@
+<script>
+  // Interactive elements
+  document.addEventListener('DOMContentLoaded', function () {
+    // Typing animation for the hero section
+    const text = "I'm passionate about project management and technology.";
+    const typingElement = document.getElementById('typing-text');
+    let i = 0;
+
+    function typeWriter() {
+      if (i < text.length) {
+        typingElement.textContent += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 50);
+      } else {
+        setTimeout(() => {
+          typingElement.classList.add('blink');
+        }, 500);
+      }
+    }
+
+    setTimeout(typeWriter, 1000);
+  });
+</script>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>replit</title>
-  <link href="style.css" rel="stylesheet" type="text/css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Megan Louie - Portfolio</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500&display=swap');
+
+    /* Base styles */
+    :root {
+      --primary-color: #222222;
+      --secondary-color: #e8e0d5;
+      --accent-color: #d1c7b7;
+      --light-accent: #f9f7f4;
+      --bg-color: #ffffff;
+      --text-color: #293241;
+      --light-text: #6c757d;
+      --header-height: 70px;
+      --border-radius: 12px;
+      --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1.8;
+      color: var(--text-color);
+      background-color: var(--bg-color);
+      background-image:
+        radial-gradient(circle at 25% 5%, rgba(209, 199, 183, 0.05) 5%, transparent 10%),
+        radial-gradient(circle at 75% 20%, rgba(209, 199, 183, 0.05) 5%, transparent 15%),
+        radial-gradient(circle at 50% 80%, rgba(209, 199, 183, 0.05) 8%, transparent 18%);
+      background-attachment: fixed;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+    }
+
+    /* Header styles */
+    header {
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--header-height);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 5%;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(152, 193, 217, 0.2);
+    }
+
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--primary-color);
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .logo::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--accent-color);
+      transition: var(--transition);
+    }
+
+    .logo:hover::after {
+      width: 100%;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+
+    nav ul li {
+      margin-left: 40px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: var(--text-color);
+      font-weight: 500;
+      position: relative;
+      padding: 5px 0;
+      transition: var(--transition);
+    }
+
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--accent-color);
+      transition: var(--transition);
+    }
+
+    nav ul li a:hover {
+      color: var(--accent-color);
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+
+    /* Main content */
+    main {
+      max-width: 1200px;
+      margin: 100px auto 60px;
+      padding: 0 30px;
+    }
+
+    /* Hero section */
+    .hero {
+      display: flex;
+      align-items: center;
+      gap: 60px;
+      margin-bottom: 80px;
+      background: white;
+      border-radius: var(--border-radius);
+      padding: 50px;
+      box-shadow: var(--card-shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    }
+
+    .portrait {
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid white;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      position: relative;
+      z-index: 1;
+      transition: var(--transition);
+    }
+
+    .portrait:hover {
+      transform: scale(1.03);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .hero-content h1 {
+      font-size: 46px;
+      margin-bottom: 20px;
+      color: var(--primary-color);
+      position: relative;
+      display: inline-block;
+    }
+
+    .hero-content h1::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent-color), transparent);
+    }
+
+    .hero-content .typing-container {
+      height: 50px;
+      margin-bottom: 30px;
+    }
+
+    .hero-content #typing-text {
+      font-size: 18px;
+      color: var(--primary-color);
+      font-style: italic;
+      position: relative;
+    }
+
+    .hero-content #typing-text.blink::after {
+      content: '|';
+      animation: blink 1s infinite;
+      margin-left: 5px;
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0;
+      }
+    }
+
+    .hero-content p {
+      font-size: 18px;
+      color: var(--text-color);
+      margin-bottom: 30px;
+      max-width: 600px;
+      line-height: 1.8;
+    }
+
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      background-color: var(--primary-color);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-weight: 500;
+      margin-right: 15px;
+      margin-top: 10px;
+      box-shadow: 0 5px 15px rgba(61, 90, 128, 0.2);
+      transition: var(--transition);
+      border: 2px solid var(--primary-color);
+    }
+
+    .contact-btn:nth-of-type(2) {
+      background-color: transparent;
+      color: var(--primary-color);
+    }
+
+    .contact-btn svg {
+      margin-right: 8px;
+    }
+
+    .contact-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(61, 90, 128, 0.3);
+      background-color: var(--accent-color);
+      border-color: var(--accent-color);
+      color: white;
+    }
+
+    /* Sections */
+    section {
+      margin-bottom: 70px;
+    }
+
+    section h2 {
+      font-size: 32px;
+      color: var(--primary-color);
+      margin-bottom: 30px;
+      text-align: center;
+      position: relative;
+      display: inline-block;
+    }
+
+    section h2::before {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+      border-radius: 3px;
+    }
+
+    /* Highlights section */
+    .highlights {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .highlight-card {
+      background-color: white;
+      border-radius: var(--border-radius);
+      padding: 30px;
+      box-shadow: var(--card-shadow);
+      transition: var(--transition);
+      position: relative;
+      border-top: 5px solid transparent;
+      overflow: hidden;
+      height: 100%;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .highlight-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+      transform: translateX(-100%);
+      transition: var(--transition);
+    }
+
+    .highlight-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .highlight-card:hover::before {
+      transform: translateX(0);
+    }
+
+    .highlight-card h3 {
+      font-size: 22px;
+      margin-bottom: 15px;
+      color: var(--primary-color);
+    }
+
+    .highlight-card p {
+      color: var(--light-text);
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
+
+    .highlight-card ul {
+      margin-left: 20px;
+      list-style-type: none;
+    }
+
+    .highlight-card ul li {
+      margin-bottom: 8px;
+      position: relative;
+      padding-left: 25px;
+    }
+
+    .highlight-card ul li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--accent-color);
+      font-weight: bold;
+    }
+
+    /* Skills section */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 40px;
+    }
+
+    .skill-tag {
+      background-color: white;
+      color: var(--primary-color);
+      padding: 8px 18px;
+      border-radius: 30px;
+      font-size: 15px;
+      font-weight: 500;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: var(--transition);
+      border: 1px solid rgba(209, 199, 183, 0.3);
+    }
+
+    .skill-tag:hover {
+      background-color: var(--secondary-color);
+      color: var(--primary-color);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 30px;
+      background-color: white;
+      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
+      position: relative;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary-color), var(--accent-color), var(--primary-color));
+    }
+
+    footer p {
+      color: var(--light-text);
+      font-size: 15px;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 30px;
+      }
+
+      .hero-content h1 {
+        font-size: 36px;
+      }
+
+      .hero-content h1::after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .highlights {
+        grid-template-columns: 1fr;
+      }
+
+      .portrait {
+        width: 200px;
+        height: 200px;
+      }
+
+      section h2 {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  Hello world
-  <script src="script.js"></script>
+  <header>
+    <a href="index.html" class="logo">Megan Louie</a>
+    <nav>
+      <ul>
+        <li><a href="resume.html">Resume</a></li>
+        <li><a href="projects.html">Projects</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <img src="portrait.jpg" alt="Megan Louie" class="portrait">
+      <div class="hero-content">
+        <h1>Megan Louie</h1>
+        <div class="typing-container">
+          <span id="typing-text"></span>
+        </div>
+        <p>As a tech-driven project manager with a passion for innovation, I thrive at the intersection of business
+          strategy and technology implementation. My approach combines analytical thinking with creative problem-solving
+          to deliver solutions that make a meaningful impact. I excel at leading cross-functional teams through complex
+          challenges, transforming ideas into reality.</p>
+        <a href="mailto:megan.louie3@gmail.com" class="contact-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+          megan.louie3@gmail.com
+        </a>
+        <a href="https://www.linkedin.com/in/meganlouie" class="contact-btn" style="margin-left: 10px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+            <rect x="2" y="9" width="4" height="12"></rect>
+            <circle cx="4" cy="4" r="2"></circle>
+          </svg>
+          LinkedIn
+        </a>
+      </div>
+    </section>
+
+    <section>
+      <h2>Work Highlights</h2>
+      <div class="highlights">
+        <div class="highlight-card">
+          <h3>Technical Project Manager</h3>
+          <p>UW Information Technology</p>
+          <ul>
+            <li>Led ServiceNow ticketing platform integration</li>
+            <li>Built Power BI dashboards for key IT divisions</li>
+            <li>Facilitated weekly Agile syncs with engineers</li>
+          </ul>
+        </div>
+        <div class="highlight-card">
+          <h3>Project Manager</h3>
+          <p>Eat Together</p>
+          <ul>
+            <li>Led Agile development of community-focused dining app</li>
+            <li>Created product requirements for new features</li>
+            <li>Conducted user research to improve UX</li>
+          </ul>
+        </div>
+        <div class="highlight-card">
+          <h3>Technology Risk Assurance Consultant Intern</h3>
+          <p>Ernst & Young</p>
+          <ul>
+            <li>Audited IT general and automated controls</li>
+            <li>Streamlined control testing using Alteryx</li>
+            <li>Built interactive Power BI dashboards</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Education</h2>
+      <div class="highlights">
+        <div class="highlight-card">
+          <h3>Master of Science in Information Systems</h3>
+          <p>University of Washington, Foster School of Business</p>
+          <p>Expected June 2025</p>
+          <p>MSIS Merit Scholarship</p>
+        </div>
+        <div class="highlight-card">
+          <h3>B.A. in Business Administration</h3>
+          <p>University of Washington, Foster School of Business</p>
+          <p>Information Systems, Operations and Supply Chain Management</p>
+          <p>June 2024, Magna Cum Laude</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Skills</h2>
+      <div class="skills-container">
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">R</span>
+        <span class="skill-tag">Excel</span>
+        <span class="skill-tag">Power BI</span>
+        <span class="skill-tag">Agile</span>
+        <span class="skill-tag">Scrum</span>
+        <span class="skill-tag">Data Analysis</span>
+        <span class="skill-tag">Networking</span>
+        <span class="skill-tag">AI/ML</span>
+        <span class="skill-tag">Leadership</span>
+        <span class="skill-tag">Product</span>
+        <span class="skill-tag">Client Management</span>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Megan Louie. All rights reserved.</p>
+  </footer>
 </body>
 
 </html>
